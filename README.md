@@ -1,3 +1,5 @@
+# Kyle Genova
+### Ph.D. Student at Princeton University
 ## Welcome to GitHub Pages
 
 You can use the [editor on GitHub](https://github.com/kylegenova/kylegenova.github.io/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
@@ -15,7 +17,7 @@ Syntax highlighted code block
 ## Header 2
 ### Header 3
 
-- Bulleted
+- Bullete
 - List
 
 1. Numbered
