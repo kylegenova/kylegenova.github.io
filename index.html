@@ -1,311 +1,414 @@
 <!DOCTYPE html>
-<html>
-
-
+<html lang="en">
 <head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Kyle Genova</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1.9.4/css/academicons.min.css">
-<style> 
-	body {
-		font: 14px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-		padding-left: 16%;
-		padding-right: 16%;
-	}
+<meta name="description" content="Kyle Genova is a Staff Research Scientist at Google DeepMind working on spatial understanding and 3D capabilities of frontier models.">
+<meta property="og:title" content="Kyle Genova">
+<meta property="og:description" content="Staff Research Scientist at Google DeepMind — 3D computer vision, spatial understanding, and frontier model pretraining.">
+<meta property="og:image" content="https://www.kylegenova.com/kgenova.jpg">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%233a8c7d'/><text x='50' y='69' font-size='52' font-family='Helvetica,Arial,sans-serif' font-weight='bold' fill='white' text-anchor='middle'>KG</text></svg>">
+<style>
+  :root {
+    --bg: #fdfdfc;
+    --text: #1e2430;
+    --muted: #5c6673;
+    --accent: #2f7d6e;
+    --accent-soft: #e4f1ee;
+    --border: #e4e6e9;
+    --card: #f4f5f6;
+    --highlight: #a25b1e;
+    --highlight-soft: #f7ede1;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #14181d;
+      --text: #e6e9ed;
+      --muted: #9aa4b0;
+      --accent: #5cbfab;
+      --accent-soft: #1d2f2b;
+      --border: #2a3038;
+      --card: #1b2026;
+      --highlight: #e0a668;
+      --highlight-soft: #33281a;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
 
-	header {
-		border-bottom: 1px solid gray;
-		text-align: center;
-	}
+  .layout {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 48px 24px 64px;
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 56px;
+  }
 
-	nav {
-	    float: left;
-	    padding-top: 5%;
-	    display: block;
-	}
+  /* ---------- Sidebar ---------- */
+  .sidebar { position: sticky; top: 48px; align-self: start; }
+  .sidebar img.portrait {
+    width: 100%;
+    border-radius: 12px;
+    display: block;
+  }
+  .sidebar h1 {
+    font-size: 26px;
+    margin: 20px 0 2px;
+    letter-spacing: -0.02em;
+  }
+  .sidebar .role {
+    color: var(--muted);
+    font-size: 14.5px;
+    margin: 0 0 18px;
+    line-height: 1.45;
+  }
+  .links { list-style: none; padding: 0; margin: 0; font-size: 15px; }
+  .links li { margin: 7px 0; display: flex; align-items: baseline; gap: 10px; }
+  .links .glyph {
+    width: 18px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 14px;
+    flex: none;
+  }
+  .email { color: var(--text); }
 
-	article {
-		overflow: hidden;
-		padding-left: 5%;
-	}
+  /* ---------- Main ---------- */
+  main { min-width: 0; }
+  section { margin-bottom: 44px; }
+  h2 {
+    font-size: 21px;
+    letter-spacing: -0.01em;
+    margin: 0 0 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+  .lede p { margin: 0 0 14px; }
 
-	a:link, a:visited {
-		color: #3a8c7d;/*#2da38d;#356d63;*/
-		text-decoration: none;
-	}
+  /* News */
+  .news { list-style: none; margin: 0; padding: 0; font-size: 15px; }
+  .news li { display: flex; gap: 14px; margin: 8px 0; }
+  .news .date { color: var(--muted); flex: none; width: 76px; font-variant-numeric: tabular-nums; }
 
+  /* Publications */
+  .year-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin: 26px 0 4px;
+  }
+  .pub {
+    padding: 14px 16px;
+    margin: 10px 0;
+    border-radius: 10px;
+    background: var(--card);
+  }
+  .pub .title { font-weight: 600; font-size: 16px; line-height: 1.4; }
+  .pub .title a { color: var(--text); }
+  .pub .title a:hover { color: var(--accent); text-decoration: none; }
+  .pub .authors { color: var(--muted); font-size: 14px; margin-top: 3px; }
+  .pub .authors .me { color: var(--text); font-weight: 600; }
+  .pub .meta { margin-top: 7px; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; font-size: 13px; }
+  .badge {
+    display: inline-block;
+    padding: 1.5px 9px;
+    border-radius: 99px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .badge.award { background: var(--highlight-soft); color: var(--highlight); }
+  .pub .meta a {
+    padding: 1.5px 9px;
+    border-radius: 99px;
+    border: 1px solid var(--border);
+    color: var(--muted);
+  }
+  .pub .meta a:hover { color: var(--accent); border-color: var(--accent); text-decoration: none; }
+
+  /* Simple lists (service, awards, teaching) */
+  .plain { list-style: none; padding: 0; margin: 0; font-size: 15px; }
+  .plain li { margin: 8px 0; }
+  .plain .sub { color: var(--muted); font-size: 14px; }
+
+  footer {
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 13px;
+  }
+
+  @media (max-width: 780px) {
+    .layout { grid-template-columns: 1fr; gap: 32px; padding-top: 32px; }
+    .sidebar { position: static; display: grid; grid-template-columns: 132px 1fr; gap: 0 20px; align-items: start; }
+    .sidebar img.portrait { grid-row: 1 / span 3; width: 132px; }
+    .sidebar h1 { margin-top: 0; font-size: 23px; }
+    .news .date { width: 68px; }
+  }
 </style>
 </head>
-
 <body>
-	<header class="header">
-	  <h1>Kyle Genova</h1>
-	</header>
+<div class="layout">
 
-	<nav class="nav">
-		<center>
-			<img src="kgenova.jpg" style="height:400px;">
-		</center>
+  <aside class="sidebar">
+    <img class="portrait" src="kgenova.jpg" alt="Portrait of Kyle Genova">
+    <h1>Kyle Genova</h1>
+    <p class="role">Staff Research Scientist<br>Google DeepMind, New York</p>
+    <ul class="links">
+      <li><span class="glyph">&#9993;</span><span class="email" id="email-slot"></span></li>
+      <li><span class="glyph">&#127891;</span><a href="https://scholar.google.com/citations?hl=en&amp;user=73HIeWcAAAAJ&amp;view_op=list_works">Google Scholar</a></li>
+      <li><span class="glyph">&#128025;</span><a href="https://github.com/kylegenova">GitHub</a></li>
+      <li><span class="glyph">&#128188;</span><a href="https://www.linkedin.com/in/kylegenova/">LinkedIn</a></li>
+      <li><span class="glyph">&#128214;</span><a href="https://dblp.org/pid/164/5882.html">DBLP</a></li>
+      <li><span class="glyph">&#128196;</span><a href="CV.pdf">Curriculum Vitae</a></li>
+    </ul>
+  </aside>
 
-		<ul class="fa-ul">
-			<li><i class="fa-li fa fa-envelope"></i>
-				<img src="princeton-info.png">
-			</li>
-         		<li><i class="fa-li ai ai-google-scholar"></i>
-		        	<a href="https://scholar.google.com/citations?hl=en&user=73HIeWcAAAAJ&view_op=list_works">Scholar</a>
-	         	</li>
-			<li><i class="fa-li fa fa-github"></i>
-				<a href="https://github.com/kylegenova" style="text-decoration: none">GitHub</a>
-			</li>
-			<li><i class="fa-li fa fa-linkedin-square"></i>
-				<a href="https://www.linkedin.com/in/kylegenova/" style="text-decoration: none">LinkedIn</a>
-			</li>
-			<li><i class="fa-li fa fa-book"></i>
-				<a href="http://dblp.uni-trier.de/pers/hd/g/Genova:Kyle" style="text-decoration: none">DBLP</a>
-			</li>
-			<li><i class="fa-li fa fa-file"></i><a href="CV.pdf">CV</a>
+  <main>
+    <section class="lede">
+      <h2>About</h2>
+      <p>I'm a Staff Research Scientist at Google DeepMind on <a href="https://www.cs.princeton.edu/~funk/">Thomas Funkhouser's</a> team, where I work on pretraining for the 3D understanding and generation capabilities of frontier models. I've contributed to the pretraining of Gemini&nbsp;3 and <a href="https://vision-banana.github.io/">Vision&nbsp;Banana</a>, as well as next-generation models in the Gemini, Gemini Omni, Nano&nbsp;Banana, and Genie families. My research background is 3D computer vision, including 3D shape representation and scene understanding.</p>
+      <p>I received my Ph.D. from Princeton University, advised by <a href="https://www.cs.princeton.edu/~funk/">Thomas Funkhouser</a> in the <a href="http://3dvision.princeton.edu">Vision &amp; Robotics Group</a>. Before that, I studied Computer Science at Cornell University, where I worked with <a href="http://www.davidpwilliamson.net/work">David Williamson</a> on theoretical computer science and combinatorial optimization.</p>
+    </section>
 
-			</li>
-		</ul>
-	</nav>
+    <section>
+      <h2>News</h2>
+      <ul class="news">
+        <li><span class="date">Jun 2026</span><span>Recognized as an Outstanding Area Chair for CVPR 2026.</span></li>
+        <li><span class="date">Apr 2026</span><span><a href="https://vision-banana.github.io/">Vision Banana</a> and <a href="https://cityrag.github.io/">CityRAG</a> are out on arXiv.</span></li>
+        <li><span class="date">Mar 2026</span><span>Joined the SIGGRAPH Asia 2026 Technical Workshops Committee.</span></li>
+        <li><span class="date">Jan 2026</span><span>Joined the SIGGRAPH 2026 Technical Papers Committee.</span></li>
+        <li><span class="date">Dec 2025</span><span>Recognized as a NeurIPS 2025 Top Reviewer.</span></li>
+        <li><span class="date">Oct 2025</span><span>Promoted to Staff Research Scientist at Google DeepMind.</span></li>
+        <li><span class="date">Oct 2025</span><span>Three papers at ICCV 2025 &mdash; MoMaps, Visual Chronicles, and SplatTalk &mdash; and served as an ICCV 2025 Area Chair.</span></li>
+      </ul>
+    </section>
 
-	<article class="article">
-	  <h1>About Me</h1>
-	  <p>I'm a Research Scientist at Google DeepMind, on <a href="http://www.cs.princeton.edu/~funk/">Thomas Funkhouser's</a> team in the Foundational Research Unit led by <a href="http://salesin.cs.washington.edu">David Salesin</a> and <a href="https://scholar.google.com/citations?user=bmZbi_UNs-oC">Rahul Sukthankar</a>.  My Ph.D. was on 3D computer vision, including 3D shape representation and scene understanding tasks. Currently I'm mostly working on Gemini pretraining projects related to 3D understanding.</p>
+    <section>
+      <h2>Publications</h2>
 
-	  <p> Previously, I was a Ph.D. student at Princeton University, where I was also advised by <a href="http://www.cs.princeton.edu/~funk/">Thomas Funkhouser</a> in the <a href="http://3dvision.princeton.edu">Vision & Robotics Group</a>. Before that, I was an undergraduate in Computer Science at Cornell University, where I worked with <a href="http://www.davidpwilliamson.net/work">David Williamson</a> in the areas of theoretical computer science and combinatorial optimization. </p>
+      <div class="year-label">2026</div>
 
-	  <h1>Research</h1>
+      <div class="pub">
+        <div class="title"><a href="https://arxiv.org/abs/2604.20329">Image Generators are Generalist Vision Learners</a></div>
+        <div class="authors">Valentin Gabeur, Shangbang Long, Songyou Peng, Paul Voigtlaender, Shuyang Sun, Yanan Bao, Karen Truong, Zhicheng Wang, Wenlei Zhou, Jonathan T. Barron, <span class="me">Kyle Genova</span>, Nithish Kannen, Sherry Ben, Yandong Li, Mandy Guo, Suhas Yogin, Yiming Gu, Huizhong Chen, Oliver Wang, Saining Xie, Howard Zhou, Kaiming He, Thomas Funkhouser, Jean-Baptiste Alayrac, Radu Soricut</div>
+        <div class="meta"><span class="badge">arXiv 2026</span><a href="https://arxiv.org/abs/2604.20329">arXiv</a><a href="https://vision-banana.github.io/">Project page</a></div>
+      </div>
 
-	  <p>
-	  <b>MoMaps: Semantics-Aware Scene Motion Generation with Motion Maps</b><br/>
-	  <b style="font-weight:lighter">Jiahui Lei, Kyle Genova, George Kopanas, Noah Snavely, Leonidas Guibas</b><br/>
-	  ICCV 2025 (Coming Soon!)
-	  </p>
+      <div class="pub">
+        <div class="title"><a href="https://arxiv.org/abs/2604.19741">CityRAG: Stepping Into a City via Spatially-Grounded Video Generation</a></div>
+        <div class="authors">Gene Chou, Charles Herrmann, <span class="me">Kyle Genova</span>, Boyang Deng, Songyou Peng, Bharath Hariharan, Jason Y. Zhang, Noah Snavely, Philipp Henzler</div>
+        <div class="meta"><span class="badge">arXiv 2026</span><a href="https://arxiv.org/abs/2604.19741">arXiv</a><a href="https://cityrag.github.io/">Project page</a></div>
+      </div>
 
-          <p>
-	  <b>Visual Chronicles: Using Multimodal LLMs to Analyze Massive Collections of Images</b><br/>
-	  <b style="font-weight:lighter">Boyang Deng, Songyou Peng, Kyle Genova, Gordon Wetzstein, Noah Snavely, Leonidas Guibas, Thomas Funkhouser</b><br/>
-	  ICCV 2025 and <a href="https://arxiv.org/pdf/2504.08727">arXiv</a><br/>
-	  <a href="https://boyangdeng.com/visual-chronicles/">Project page</a>
-	  </p>
+      <div class="year-label">2025</div>
 
-          <p>
-	  <b>SplatTalk: 3D VQA with Gaussian Splatting</b><br/>
-	  <b style="font-weight:lighter">Anh Thai, Songyou Peng, Kyle Genova, Leonidas Guibas, Thomas Funkhouser</b><br/>
-	  ICCV 2025 and <a href="https://arxiv.org/pdf/2503.06271">arXiv</a><br/>
-	  <a href="https://splat-talk.github.io/">Project page</a>
-	  </p>
+      <div class="pub">
+        <div class="title"><a href="https://arxiv.org/abs/2510.11107">MoMaps: Semantics-Aware Scene Motion Generation with Motion Maps</a></div>
+        <div class="authors">Jiahui Lei, <span class="me">Kyle Genova</span>, George Kopanas, Noah Snavely, Leonidas Guibas</div>
+        <div class="meta"><span class="badge">ICCV 2025</span><a href="https://arxiv.org/abs/2510.11107">arXiv</a><a href="http://openaccess.thecvf.com/content/ICCV2025/html/Lei_MoMaps_Semantics-Aware_Scene_Motion_Generation_with_Motion_Maps_ICCV_2025_paper.html">Paper</a></div>
+      </div>
 
+      <div class="pub">
+        <div class="title"><a href="https://arxiv.org/abs/2504.08727">Visual Chronicles: Using Multimodal LLMs to Analyze Massive Collections of Images</a></div>
+        <div class="authors">Boyang Deng, Songyou Peng, <span class="me">Kyle Genova</span>, Gordon Wetzstein, Noah Snavely, Leonidas Guibas, Thomas Funkhouser</div>
+        <div class="meta"><span class="badge">ICCV 2025</span><a href="https://arxiv.org/abs/2504.08727">arXiv</a><a href="https://boyangdeng.com/visual-chronicles/">Project page</a></div>
+      </div>
 
-          <p>
-	  <b>LOC3DIFF: Local Diffusion for 3D Human Head Synthesis and Editing</b><br/>
-	  <b style="font-weight:lighter">Yushi Lan, Feitong Tan, Qiangeng Xu, Di Qiu, Kyle Genova, Zeng Huang, Sean Fanello, Rohit Pandey, Thomas Funkhouser, Chen Change Loy, Yinda Zhang</b><br/>
-	  <a href="https://www.ecva.net/papers/eccv_2024/papers_ECCV/papers/08166.pdf">ECCV 2024</a><br/>
-	  </p>
+      <div class="pub">
+        <div class="title"><a href="https://arxiv.org/abs/2503.06271">SplatTalk: 3D VQA with Gaussian Splatting</a></div>
+        <div class="authors">Anh Thai, Songyou Peng, <span class="me">Kyle Genova</span>, Leonidas Guibas, Thomas Funkhouser</div>
+        <div class="meta"><span class="badge">ICCV 2025</span><a href="https://arxiv.org/abs/2503.06271">arXiv</a><a href="https://splat-talk.github.io/">Project page</a></div>
+      </div>
 
-	  <p>
-	  <b>Nifty: Neural Object Interaction Fields for Guided Human Motion Synthesis</b><br/>
-	  <b style="font-weight:lighter">Nilesh Kulkarni, Davis Rempe, Kyle Genova, Abhijit Kundu, Justin Johnson, David Fouhey, Leonidas Guibas</b><br/>
-	  CVPR 2024 and <a href="https://arxiv.org/abs/2307.07511">arXiv</a><br/>
-	  <a href="https://nileshkulkarni.github.io/nifty/">Project page</a>
-	  </p>
+      <div class="year-label">2024</div>
 
-	  <p>
-	  <b>Nerflets: Local Radiance Fields for Efficient Structure-Aware 3D Scene Representation from 2D Supervision</b><br/>
-	  <b style="font-weight:lighter">Xiaoshuai Zhang, Abhijit Kundu, Thomas Funkhouser, Leonidas Guibas, Hao Su, Kyle Genova</b><br/>
-	  CVPR 2023 and <a href="https://arxiv.org/abs/2303.03361">arXiv</a><br/>
-	  <a href="https://jetd1.github.io/nerflets-web/">Project page</a>
-	  </p>
+      <div class="pub">
+        <div class="title"><a href="https://www.ecva.net/papers/eccv_2024/papers_ECCV/papers/08166.pdf">LOC3DIFF: Local Diffusion for 3D Human Head Synthesis and Editing</a></div>
+        <div class="authors">Yushi Lan, Feitong Tan, Qiangeng Xu, Di Qiu, <span class="me">Kyle Genova</span>, Zeng Huang, Sean Fanello, Rohit Pandey, Thomas Funkhouser, Chen Change Loy, Yinda Zhang</div>
+        <div class="meta"><span class="badge">ECCV 2024</span><a href="https://www.ecva.net/papers/eccv_2024/papers_ECCV/papers/08166.pdf">Paper</a></div>
+      </div>
 
-	  <p>
-	  <b>OpenScene: 3D Scene Understanding with Open Vocabularies</b><br/>
-	  <b style="font-weight:lighter">Songyou Peng, Kyle Genova, Chiyu "Max" Jiang, Andrea Tagliasacchi, Marc Pollefeys, Thomas Funkhouser</b><br/>
-	  CVPR 2023 and <a href="https://arxiv.org/abs/2211.15654">arXiv</a><br/>
-	  <a href="https://pengsongyou.github.io/openscene/">Project page</a>
-	  </p>
+      <div class="pub">
+        <div class="title"><a href="https://arxiv.org/abs/2307.07511">NIFTY: Neural Object Interaction Fields for Guided Human Motion Synthesis</a></div>
+        <div class="authors">Nilesh Kulkarni, Davis Rempe, <span class="me">Kyle Genova</span>, Abhijit Kundu, Justin Johnson, David Fouhey, Leonidas Guibas</div>
+        <div class="meta"><span class="badge">CVPR 2024</span><a href="https://arxiv.org/abs/2307.07511">arXiv</a><a href="https://nileshkulkarni.github.io/nifty/">Project page</a></div>
+      </div>
 
-	  <p>
-	  <b>Polynomial Neural Fields for Subband Decomposition and Manipulation</b><br/>
-	  <b style="font-weight:lighter">Guandao Yang*, Sagie Benaim*, Varun Jampani, Kyle Genova, Jonathan T. Barron, Thomas Funkhouser, Bharath Hariharan, Serge Belongie</b><br/>
-	  NeurIPS 2022 and <a href="https://arxiv.org/abs/2302.04862">arXiv</a><br/>
-	  <a href="https://github.com/stevenygd/PNF">Project page</a>
-	  </p>
+      <div class="year-label">2023</div>
 
-	  <p>
-	  <b>Panoptic Neural Fields: A Semantic Object-Aware Neural Scene Representation</b><br/>
-	  <b style="font-weight:lighter">Abhijit Kundu, Kyle Genova, Xiaoqi Yin, Alireza Fathi, Caroline Pantofaru, Leonidas Guibas, Andrea Tagliasacchi, Frank Dellaert, Thomas Funkhouser</b><br/>
-	  CVPR 2022 and <a href="https://arxiv.org/abs/2205.04334">arXiv</a><br/>
-	  <a href="https://abhijitkundu.info/projects/pnf/">Project page</a>
-	  </p>
+      <div class="pub">
+        <div class="title"><a href="https://arxiv.org/abs/2303.03361">Nerflets: Local Radiance Fields for Efficient Structure-Aware 3D Scene Representation from 2D Supervision</a></div>
+        <div class="authors">Xiaoshuai Zhang, Abhijit Kundu, Thomas Funkhouser, Leonidas Guibas, Hao Su, <span class="me">Kyle Genova</span></div>
+        <div class="meta"><span class="badge">CVPR 2023</span><a href="https://arxiv.org/abs/2303.03361">arXiv</a><a href="http://openaccess.thecvf.com/content/CVPR2023/html/Zhang_Nerflets_Local_Radiance_Fields_for_Efficient_Structure-Aware_3D_Scene_Representation_CVPR_2023_paper.html">Paper</a></div>
+      </div>
 
-	  <p>
-	  <b>Learning 3D Semantic Segmentation with only 2D Image Supervision</b><br/>
-	  <b style="font-weight:lighter">Kyle Genova, Xiaoqi Yin, Abhijit Kundu, Caroline Pantofaru, Forrester Cole, Avneesh Sud, Brian Brewington, Brian Shucker, Thomas Funkhouser</b><br/>
-	  3DV 2021 (<b>Oral</b>) and <a href="https://arxiv.org/abs/2110.11325">arXiv</a>
-	  </p>
+      <div class="pub">
+        <div class="title"><a href="https://arxiv.org/abs/2211.15654">OpenScene: 3D Scene Understanding with Open Vocabularies</a></div>
+        <div class="authors">Songyou Peng, <span class="me">Kyle Genova</span>, Chiyu "Max" Jiang, Andrea Tagliasacchi, Marc Pollefeys, Thomas Funkhouser</div>
+        <div class="meta"><span class="badge">CVPR 2023</span><a href="https://arxiv.org/abs/2211.15654">arXiv</a><a href="https://pengsongyou.github.io/openscene">Project page</a></div>
+      </div>
 
-	  <p>
-	  <b>NeSF: Neural Semantic Fields for Generalizable Semantic Segmentation of 3D Scenes</b><br/>
-	  <b style="font-weight:lighter">Suhani Vora, Noha Radwan, Klaus Greff, Henning Meyer, Kyle Genova, Mehdi SM Sajjadi, Etienne Pot, Andrea Tagliasacchi, Daniel Duckworth</b><br/>
-	  TMLR 2022 and <a href="https://arxiv.org/abs/2111.13260">arXiv</a><br/>
-	  <a href="https://nesf3d.github.io">Project page</a>
-	  </p>
+      <div class="year-label">2022</div>
 
-	  <p>
-	  <b>Multiresolution Deep Implicit Functions for 3D Shape Representation</b><br/>
-	  <b style="font-weight:lighter">Zhang Chen, Yinda Zhang, Kyle Genova, Sean Fanello, Sofien Bouaziz, Christian H&#228ne, Roufei Du, Cem Keskin, Thomas Funkhouser, Danhang Tang</b><br/>
-	  ICCV 2021 and <a href="https://arxiv.org/abs/2109.05591">arXiv</a>
-	  </p>
+      <div class="pub">
+        <div class="title"><a href="https://arxiv.org/abs/2302.04862">Polynomial Neural Fields for Subband Decomposition and Manipulation</a></div>
+        <div class="authors">Guandao Yang*, Sagie Benaim*, Varun Jampani, <span class="me">Kyle Genova</span>, Jonathan T. Barron, Thomas Funkhouser, Bharath Hariharan, Serge Belongie</div>
+        <div class="meta"><span class="badge">NeurIPS 2022</span><a href="https://arxiv.org/abs/2302.04862">arXiv</a><a href="https://github.com/stevenygd/PNF">Code</a></div>
+      </div>
 
-	  <p>
-	  <b>Differentiable Surface Rendering via Non-differentiable Sampling</b><br/>
-	  <b style="font-weight:lighter">Forrester Cole, Kyle Genova, Avneesh Sud, Daniel Vlasic, Zhoutong Zhang</b><br/>
-	  ICCV 2021 and <a href="https://arxiv.org/abs/2108.04886">arXiv</a>
-	  </p>
+      <div class="pub">
+        <div class="title"><a href="https://arxiv.org/abs/2205.04334">Panoptic Neural Fields: A Semantic Object-Aware Neural Scene Representation</a></div>
+        <div class="authors">Abhijit Kundu, <span class="me">Kyle Genova</span>, Xiaoqi Yin, Alireza Fathi, Caroline Pantofaru, Leonidas Guibas, Andrea Tagliasacchi, Frank Dellaert, Thomas Funkhouser</div>
+        <div class="meta"><span class="badge">CVPR 2022</span><a href="https://arxiv.org/abs/2205.04334">arXiv</a><a href="https://abhijitkundu.info/projects/pnf/">Project page</a></div>
+      </div>
 
-	  <p>
-	  <b>3D Representations for Learning to Reconstruct and Segment Shapes</b><br/>
-	  <b style="font-weight:lighter">Kyle Genova</b><br/>
-	  Thesis (<a href="http://arks.princeton.edu/ark:/88435/dsp01b2773z77c">Hosted</a> at Princeton University)
-	  </p>
+      <div class="pub">
+        <div class="title"><a href="https://arxiv.org/abs/2111.13260">NeSF: Neural Semantic Fields for Generalizable Semantic Segmentation of 3D Scenes</a></div>
+        <div class="authors">Suhani Vora, Noha Radwan, Klaus Greff, Henning Meyer, <span class="me">Kyle Genova</span>, Mehdi S. M. Sajjadi, Etienne Pot, Andrea Tagliasacchi, Daniel Duckworth</div>
+        <div class="meta"><span class="badge">TMLR 2022</span><a href="https://arxiv.org/abs/2111.13260">arXiv</a><a href="https://nesf3d.github.io">Project page</a></div>
+      </div>
 
-	  <p>
-	  <b>IBRNet: Learning Multi-View Image-based Rendering</b><br/>
-	  <b style="font-weight:lighter">Qianqian Wang, Zhicheng Wang, Kyle Genova, Pratul P. Srinivasan, Howard Zhou, Jonathan T. Barron, Ricardo Martin-Brualla, Noaha Snavely, Thomas Funkhouser</b><br/>
-	  CVPR 2021 and <a href="https://arxiv.org/abs/2102.13090">arXiv</a>
-	  </p>
+      <div class="year-label">2021</div>
 
-          <p>
-	  <b>Local Deep Implicit Functions for 3D Shape</b><br/>
-          <b style="font-weight:lighter">Kyle Genova, Forrester Cole, Avneesh Sud, Aaron Sarna, Thomas Funkhouser</b><br/>
-          CVPR 2020 (<b>Oral</b>) and <a href="https://arxiv.org/abs/1912.06126">arXiv</a>
-          Formerly "Deep Structured Implicit Functions"<br/>
-          <a href="https://ldif.cs.princeton.edu">Project page</a>, <a href="https://youtu.be/3RAITzNWVJs">Video</a>, and <a href="https://github.com/google/ldif">Code</a>
-          </p>
+      <div class="pub">
+        <div class="title"><a href="https://arxiv.org/abs/2110.11325">Learning 3D Semantic Segmentation with only 2D Image Supervision</a></div>
+        <div class="authors"><span class="me">Kyle Genova</span>, Xiaoqi Yin, Abhijit Kundu, Caroline Pantofaru, Forrester Cole, Avneesh Sud, Brian Brewington, Brian Shucker, Thomas Funkhouser</div>
+        <div class="meta"><span class="badge">3DV 2021</span><span class="badge award">Oral</span><a href="https://arxiv.org/abs/2110.11325">arXiv</a></div>
+      </div>
 
-          <p>
-          <b>CvxNet: Learnable Convex Decomposition</b><br/>
-          <b style="font-weight:lighter">Boyang Deng, Kyle Genova, Soroosh Yazdani, Sofien Bouaziz, Geoffrey Hinton, Andrea Tagliasacchi</b><br/>
-          CVPR 2020 (<b>Best Paper Nominee</b>) and <a href="https://arxiv.org/abs/1909.05736">arXiv</a><br/>
-          </p>
+      <div class="pub">
+        <div class="title"><a href="https://arxiv.org/abs/2109.05591">Multiresolution Deep Implicit Functions for 3D Shape Representation</a></div>
+        <div class="authors">Zhang Chen, Yinda Zhang, <span class="me">Kyle Genova</span>, Sean Fanello, Sofien Bouaziz, Christian H&auml;ne, Ruofei Du, Cem Keskin, Thomas Funkhouser, Danhang Tang</div>
+        <div class="meta"><span class="badge">ICCV 2021</span><a href="https://arxiv.org/abs/2109.05591">arXiv</a></div>
+      </div>
 
-          <p>
-          <b>Towards Fairness in Visual Recognition: Effective Strategies for Bias Mitigation</b><br/>
-          <b style="font-weight:lighter">Zeyu Wang, Klint Qinami, Ioannis Christos Karakozis, Kyle Genova, Prem Nair, Kenji Hata, Olga Russakovsky</b><br/>
-          CVPR 2020 and <a href="https://arxiv.org/abs/1911.11834">arXiv</a>
+      <div class="pub">
+        <div class="title"><a href="https://arxiv.org/abs/2108.04886">Differentiable Surface Rendering via Non-differentiable Sampling</a></div>
+        <div class="authors">Forrester Cole, <span class="me">Kyle Genova</span>, Avneesh Sud, Daniel Vlasic, Zhoutong Zhang</div>
+        <div class="meta"><span class="badge">ICCV 2021</span><a href="https://arxiv.org/abs/2108.04886">arXiv</a></div>
+      </div>
 
-          <p>
-          <b>Learning Shape Templates with Structured Implicit Functions</b><br/>
-          <b style="font-weight:lighter">Kyle Genova, Forrester Cole, Daniel Vlasic, Aaron Sarna, William T. Freeman, Thomas Funkhouser</b><br/>
-          ICCV 2019 and <a href="https://arxiv.org/abs/1904.06447">arXiv</a><br/>
-          <a href="https://github.com/google/ldif">Code</a>
-          </p>
+      <div class="pub">
+        <div class="title"><a href="http://arks.princeton.edu/ark:/88435/dsp01b2773z77c">3D Representations for Learning to Reconstruct and Segment Shapes</a></div>
+        <div class="authors"><span class="me">Kyle Genova</span></div>
+        <div class="meta"><span class="badge">Ph.D. Thesis</span><a href="http://arks.princeton.edu/ark:/88435/dsp01b2773z77c">Princeton University</a></div>
+      </div>
 
-          <p>
-          <b>Text-based Editing of Talking-head Video</b><br/>
-          <b style="font-weight:lighter">Ohad Fried, Ayush Tewari, Michael Zollh&#246fer, Adam Finkelstein, Eli Schechtman, Dan B. Goldman, Kyle Genova, Zeyu Jin, Christian Theobalt, Maneesh Agrawala</b><br/>
-          SIGGRAPH 2019 and <a href="https://arxiv.org/abs/1906.01524">arXiv</a><br/>
-          <a href="https://www.youtube.com/watch?v=0ybLCfVeFL4">Video</a> (<b>300K Views</b>) and <a href="https://www.ohadf.com/projects/text-based-editing/">project page</a>
-          </p>
+      <div class="pub">
+        <div class="title"><a href="https://arxiv.org/abs/2102.13090">IBRNet: Learning Multi-View Image-Based Rendering</a></div>
+        <div class="authors">Qianqian Wang, Zhicheng Wang, <span class="me">Kyle Genova</span>, Pratul P. Srinivasan, Howard Zhou, Jonathan T. Barron, Ricardo Martin-Brualla, Noah Snavely, Thomas Funkhouser</div>
+        <div class="meta"><span class="badge">CVPR 2021</span><a href="https://arxiv.org/abs/2102.13090">arXiv</a><a href="https://ibrnet.github.io/">Project page</a></div>
+      </div>
 
-          <p>
-          <b>Unsupervised Training for 3D Morphable Model Regression</b><br/>
-          <b style="font-weight:lighter">Kyle Genova, Forrester Cole, Aaron Maschinot, Aaron Sarna, Daniel Vlasic, William T. Freeman</b><br/>
-          <a href="http://openaccess.thecvf.com/content_cvpr_2018/papers/Genova_Unsupervised_Training_for_CVPR_2018_paper.pdf">CVPR 2018</a> (<b>Spotlight</b>) and <a href="https://arxiv.org/abs/1806.06098">arXiv</a>
-          </p>
+      <div class="year-label">2020</div>
 
-	  <p>
-	  <b>Learning Where to Look: Data-Driven Viewpoint Set Selection for 3D Scenes</b><br/>
-          <b style="font-weight:lighter">Kyle Genova, Manolis Savva, Angel X. Chang, Thomas Funkhouser</b><br/>
-	  	<a href="https://arxiv.org/abs/1704.02393">arXiv</a>
-	  </p>
+      <div class="pub">
+        <div class="title"><a href="https://arxiv.org/abs/1912.06126">Local Deep Implicit Functions for 3D Shape</a></div>
+        <div class="authors"><span class="me">Kyle Genova</span>, Forrester Cole, Avneesh Sud, Aaron Sarna, Thomas Funkhouser</div>
+        <div class="meta"><span class="badge">CVPR 2020</span><span class="badge award">Oral</span><a href="https://arxiv.org/abs/1912.06126">arXiv</a><a href="https://ldif.cs.princeton.edu">Project page</a><a href="https://github.com/google/ldif">Code</a><a href="https://youtu.be/3RAITzNWVJs">Video</a></div>
+      </div>
 
-	  <p>
-	  <b>An Experimental Evaluation of the Best-of-Many Christofides' Algorithm for the Traveling Salesman Problem</b><br/>
-          <b style="font-weight:lighter">Kyle Genova and David P. Williamson</b><br/>
-	  	<a href="https://link.springer.com/article/10.1007%2Fs00453-017-0293-5">Algorithmica 2017</a> (<b>Selected Publication</b>),
-	  	<a href="https://link.springer.com/chapter/10.1007/978-3-662-48350-3_48">ESA 2015</a>, and
-	  	<a href="https://arxiv.org/abs/1506.07776">arXiv</a>
-	  </p>
+      <div class="pub">
+        <div class="title"><a href="https://arxiv.org/abs/1909.05736">CvxNet: Learnable Convex Decomposition</a></div>
+        <div class="authors">Boyang Deng, <span class="me">Kyle Genova</span>, Soroosh Yazdani, Sofien Bouaziz, Geoffrey Hinton, Andrea Tagliasacchi</div>
+        <div class="meta"><span class="badge">CVPR 2020</span><span class="badge award">Best Paper Nominee</span><a href="https://arxiv.org/abs/1909.05736">arXiv</a><a href="https://cvxnet.github.io/">Project page</a></div>
+      </div>
 
-	  <h1>Fellowships & Scholarships</h1>
-	  <p><i>NSF GRFP</i><br/>
-	  National Science Foundation, 2018-2022</p>
+      <div class="pub">
+        <div class="title"><a href="https://arxiv.org/abs/1911.11834">Towards Fairness in Visual Recognition: Effective Strategies for Bias Mitigation</a></div>
+        <div class="authors">Zeyu Wang, Klint Qinami, Ioannis Christos Karakozis, <span class="me">Kyle Genova</span>, Prem Nair, Kenji Hata, Olga Russakovsky</div>
+        <div class="meta"><span class="badge">CVPR 2020</span><a href="https://arxiv.org/abs/1911.11834">arXiv</a></div>
+      </div>
 
-	  <p><i>Gordon Y.S. Wu Fellowship in Engineering</i><br/>
-	  Princeton Unversity, 2016-2021</p>
-	  <p><i>Hatton Lovejoy Scholarship</i><br/>
-	  	Fuller E. Callaway Foundation, 2012-2016</p>
-	  <p><i>Valtarese Foundation Scholarship</i><br/>
-	  Valtarese Foundation, 2012</p>
-	  <!--<p>National Merit Finalist<br/>
-	  	National Merit Foundation, 2011<br/></p>-->
+      <div class="year-label">2019</div>
 
-          <h1>Awards</h1>
-          <p><i>Class of 2021 <a href="https://www.businesswire.com/news/home/20200923005023/en/Siebel-Scholars-Foundation-Announces-Class-of-2021">Siebel Scholar</a><br/>The Thomas and Stacey Siebel Foundation, 2020</p>
-          <p><i>Graduate Student Teaching Award</i><br/>Princeton University, 2018</p>
-	  <p><i>Phi Beta Kappa</i><br/>
-	  Cornell University, 2015</p>
-	  <p><i>Computing Research Association Oustanding Undergraduate Researcher Nomination</i><br/>
-	  Cornell University, 2015</p>
-	  <!--<p><i>Valedictorian</i><br/>
-	  LaGrange Academy, 2012</p>-->
+      <div class="pub">
+        <div class="title"><a href="https://arxiv.org/abs/1904.06447">Learning Shape Templates with Structured Implicit Functions</a></div>
+        <div class="authors"><span class="me">Kyle Genova</span>, Forrester Cole, Daniel Vlasic, Aaron Sarna, William T. Freeman, Thomas Funkhouser</div>
+        <div class="meta"><span class="badge">ICCV 2019</span><a href="https://arxiv.org/abs/1904.06447">arXiv</a><a href="https://github.com/google/ldif">Code</a></div>
+      </div>
 
-	  <h1>Internships</h1>
+      <div class="pub">
+        <div class="title"><a href="https://arxiv.org/abs/1906.01524">Text-based Editing of Talking-head Video</a></div>
+        <div class="authors">Ohad Fried, Ayush Tewari, Michael Zollh&ouml;fer, Adam Finkelstein, Eli Shechtman, Dan B. Goldman, <span class="me">Kyle Genova</span>, Zeyu Jin, Christian Theobalt, Maneesh Agrawala</div>
+        <div class="meta"><span class="badge">SIGGRAPH 2019</span><a href="https://arxiv.org/abs/1906.01524">arXiv</a><a href="https://www.ohadf.com/projects/text-based-editing/">Project page</a><a href="https://www.youtube.com/watch?v=0ybLCfVeFL4">Video (391K views)</a></div>
+      </div>
 
-          <p><i>Multiple Projects</i><br/>
-          Google<br/>
-          Ph.D. Internship, Mountain View, CA, 2019-2021<br/>
-          Long-term internship in Machine Perception Group.
-          </p>
+      <div class="year-label">2018 &amp; earlier</div>
 
-	  <p><i>Learning Shape Templates with Structured Implicit Functions</i><br/>
-	  Google<br/>
-	  Ph.D. Internship, Cambridge, MA, 2018<br/>
-	  Cambridge Vision Research Group, with <a href="https://ai.google/research/people/AaronSarna">Aaron Sarna</a> and <a href="https://billf.mit.edu">Bill Freeman</a></p>
+      <div class="pub">
+        <div class="title"><a href="https://arxiv.org/abs/1806.06098">Unsupervised Training for 3D Morphable Model Regression</a></div>
+        <div class="authors"><span class="me">Kyle Genova</span>, Forrester Cole, Aaron Maschinot, Aaron Sarna, Daniel Vlasic, William T. Freeman</div>
+        <div class="meta"><span class="badge">CVPR 2018</span><span class="badge award">Spotlight</span><a href="https://arxiv.org/abs/1806.06098">arXiv</a><a href="http://openaccess.thecvf.com/content_cvpr_2018/papers/Genova_Unsupervised_Training_for_CVPR_2018_paper.pdf">Paper</a></div>
+      </div>
 
-	  <p><i>Unsupervised Training for 3D Morphable Model Regression</i><br/>
-	  Google<br/>
-	  Ph.D. Internship, Cambridge, MA, 2017<br/>
-	  Cambridge Vision Research Group, with <a href="http://people.csail.mit.edu/fcole/">Forrester Cole</a> and <a href="https://billf.mit.edu">Bill Freeman</a></p>
+      <div class="pub">
+        <div class="title"><a href="https://arxiv.org/abs/1704.02393">Learning Where to Look: Data-Driven Viewpoint Set Selection for 3D Scenes</a></div>
+        <div class="authors"><span class="me">Kyle Genova</span>, Manolis Savva, Angel X. Chang, Thomas Funkhouser</div>
+        <div class="meta"><span class="badge">arXiv 2017</span><a href="https://arxiv.org/abs/1704.02393">arXiv</a></div>
+      </div>
 
-	  <p>
-		<i>In-Memory K-Way Balanced Graph Partitioning</i><br/>
-	  	Google<br/>
-	  	Ph.D. Internship, New York, NY, 2016<br/>
-	  	
-	  NYC Algorithms Research Group, with <a href="https://research.google.com/pubs/AaronArcher.html">Aaron Archer</a> and <a href="https://people.csail.mit.edu/mirrokni/Welcome.html">Vahab Mirrokni</a></p>
+      <div class="pub">
+        <div class="title"><a href="https://link.springer.com/article/10.1007%2Fs00453-017-0293-5">An Experimental Evaluation of the Best-of-Many Christofides' Algorithm for the Traveling Salesman Problem</a></div>
+        <div class="authors"><span class="me">Kyle Genova</span>, David P. Williamson</div>
+        <div class="meta"><span class="badge">Algorithmica 2017</span><span class="badge">ESA 2015</span><span class="badge award">ESA Selected Publication</span><a href="https://arxiv.org/abs/1506.07776">arXiv</a></div>
+      </div>
+    </section>
 
-	  <!--<p>Identifying Infectious Disease Risks in Patients<br/>
-	  Epic Systems, Verona, WI<br/>
-	  	Software Engineering Internship<br/>
-	  </p>-->
-		
-          <h1>Conferences</h1>
+    <section>
+      <h2>Academic Service</h2>
+      <ul class="plain">
+        <li><b>Area Chair</b> — CVPR 2026 (<i>Outstanding Area Chair</i>); ICCV 2025; SIGGRAPH 2026 (Technical Papers Committee)</li>
+        <li><b>Technical Workshops Committee</b> — SIGGRAPH Asia 2026</li>
+        <li><b>Reviewer</b> — CVPR (2025, 2022, 2021 <i>Outstanding Reviewer</i>, 2020, 2019, 2018), ICCV (2023, 2021, 2019), ECCV (2024, 2022, 2020 <i>Outstanding Reviewer</i>), NeurIPS (2025 <i>Top Reviewer</i>, 2019 <i>Top Reviewer</i>), SIGGRAPH (2024, 2023, 2022, 2020), SIGGRAPH Asia (2024, 2023, 2022, 2021, 2019), OpenSUN3D 2024</li>
+      </ul>
+    </section>
 
-	<p><i>
-		CVPR 2026 Area Chair, 2025, 2022, 2021 Outstanding Reviewer, 2020, 2019, 2018<br/>
-		ICCV 2025 Area Chair, 2023, 2021, 2019 Reviewer<br/>
-		ECCV 2024, 2022, 2020 Outstanding Reviewer<br/>
-		NeurIPS 2025, 2019 Top Reviewer<br/>
-		OpenSUN3D 2024 Reviewer<br/>
-		SIGGRAPH 2024, 2023, 2022, 2020<br/>
-		SIGGRAPH Asia 2024, 2023, 2022, 2021, 2019<br/>
-	</i></p>
+    <section>
+      <h2>Awards &amp; Fellowships</h2>
+      <ul class="plain">
+        <li><a href="https://engineering.princeton.edu/news/2020/09/30/graduate-students-honored-siebel-scholar-awards">Siebel Scholar</a>, Class of 2021 <span class="sub">— The Thomas and Stacey Siebel Foundation, 2020</span></li>
+        <li>NSF Graduate Research Fellowship <span class="sub">— National Science Foundation, 2018&ndash;2022</span></li>
+        <li>Graduate Student Teaching Award <span class="sub">— Princeton University, 2018</span></li>
+        <li>Gordon Y.S. Wu Fellowship in Engineering <span class="sub">— Princeton University, 2016&ndash;2021</span></li>
+        <li>Phi Beta Kappa <span class="sub">— Cornell University, 2015</span></li>
+        <li>CRA Outstanding Undergraduate Researcher Nomination <span class="sub">— Cornell University, 2015</span></li>
+        <li>Hatton Lovejoy Scholarship <span class="sub">— Fuller E. Callaway Foundation, 2012&ndash;2016</span></li>
+      </ul>
+    </section>
 
-	  <h1>Teaching</h1>
-	  
-	  <p>Princeton University, Assistant in Instruction<br/>
-		<i>Computer Graphics</i>, COS426 Spring 2018<br/>
-	  	<i>Computer Vision</i>, COS 429 Fall 2017<br/>
+    <section>
+      <h2>Teaching</h2>
+      <ul class="plain">
+        <li>Princeton University, Assistant in Instruction <span class="sub">— Computer Graphics (COS 426, Spring 2018), Computer Vision (COS 429, Fall 2017)</span></li>
+        <li>Cornell University, Teaching Assistant <span class="sub">— Analysis of Algorithms (CS 4820, Spring 2016), Computer Graphics (CS 4620, Fall 2015), Data Structures &amp; Functional Programming (CS 3110, Fall 2014)</span></li>
+      </ul>
+    </section>
 
-	  <p>Cornell University, Teaching Assistant<br/>
-	  	<i>Intro to Analysis of Algorithms</i>, CS 4820 Spring 2016<br/>
-	  	<i>Computer Graphics</i>, CS 4620 Fall 2015<br/>
-	  	<i>Data Structures and Functional Programming</i>, CS 3110 Fall 2014<br/>
+    <footer>
+      &copy; 2026 Kyle Genova &middot; Last updated July 2026
+    </footer>
+  </main>
 
-	</article>
+</div>
+<script>
+  /* Assembled at runtime to keep the address out of the page source for scrapers. */
+  document.getElementById('email-slot').textContent = ['kyleagenova', 'gmail.com'].join('@');
+</script>
 </body>
 </html>
-
